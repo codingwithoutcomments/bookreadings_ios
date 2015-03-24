@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35FE3BEEE146904BFA398C91 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C44C8F8B7FE5CA53B36DBB38 /* libPods.a */; };
 		4384F3231AC1D7F000A582E0 /* Reading.m in Sources */ = {isa = PBXBuildFile; fileRef = 4384F3221AC1D7F000A582E0 /* Reading.m */; };
+		4384F3291AC21AAB00A582E0 /* ReadingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4384F3281AC21AAB00A582E0 /* ReadingTableViewCell.m */; };
 		43CE1DDF1AB9F13D006CA335 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CE1DDE1AB9F13D006CA335 /* main.m */; };
 		43CE1DE21AB9F13E006CA335 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CE1DE11AB9F13E006CA335 /* AppDelegate.m */; };
 		43CE1DE51AB9F13E006CA335 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CE1DE41AB9F13E006CA335 /* MasterViewController.m */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		4384F3211AC1D7F000A582E0 /* Reading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reading.h; sourceTree = "<group>"; };
 		4384F3221AC1D7F000A582E0 /* Reading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reading.m; sourceTree = "<group>"; };
+		4384F3271AC21AAB00A582E0 /* ReadingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingTableViewCell.h; sourceTree = "<group>"; };
+		4384F3281AC21AAB00A582E0 /* ReadingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingTableViewCell.m; sourceTree = "<group>"; };
 		43CE1DD91AB9F13D006CA335 /* bookreadings_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookreadings_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CE1DDD1AB9F13D006CA335 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43CE1DDE1AB9F13D006CA335 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 			children = (
 				4384F3211AC1D7F000A582E0 /* Reading.h */,
 				4384F3221AC1D7F000A582E0 /* Reading.m */,
+				4384F3271AC21AAB00A582E0 /* ReadingTableViewCell.h */,
+				4384F3281AC21AAB00A582E0 /* ReadingTableViewCell.m */,
 			);
 			name = Reading;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4384F3291AC21AAB00A582E0 /* ReadingTableViewCell.m in Sources */,
 				43CE1DE21AB9F13E006CA335 /* AppDelegate.m in Sources */,
 				43CE1DE51AB9F13E006CA335 /* MasterViewController.m in Sources */,
 				4384F3231AC1D7F000A582E0 /* Reading.m in Sources */,

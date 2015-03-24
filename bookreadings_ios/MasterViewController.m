@@ -9,6 +9,7 @@
 #import <Firebase/Firebase.h>
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "ReadingTableViewCell.h"
 
 @interface MasterViewController ()
 
@@ -90,10 +91,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    ReadingTableViewCell *cell = (ReadingTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     Reading * reading = self.readings[indexPath.row];
-    cell.textLabel.text = reading.title;
+    NSURL * url = [NSURL URLWithString:@"https://d1onveq9178bu8.cloudfront.net/api/file/25GB4DQATQaRj1pYYDQA/convert?w=623&h=623&fit=crop&align=center"];
+    NSData *imageData = [NSData dataWithContentsOfURL:url];
+    cell.coverImage.image = [UIImage imageWithData:imageData];
+    //cell.textLabel.text = reading.title;
     
     return cell;
 }
