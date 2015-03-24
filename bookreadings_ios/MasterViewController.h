@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Reading.h"
 
 @class DetailViewController;
 
 @interface MasterViewController : UITableViewController
 
+@property (strong, nonatomic) NSMutableArray * readings;
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
 

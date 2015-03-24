@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Reath, Chris X. -ND. All rights reserved.
 //
 
+#import <Firebase/Firebase.h>
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 
@@ -29,23 +30,40 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.readings = [[NSMutableArray alloc] init];
+    
+    Firebase * myRootRef = [[Firebase alloc] initWithUrl:@"https://bookreadings.firebaseio.com/readingsByFeatured"];
+    
+    [myRootRef observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        
+        NSString * reading_id = snapshot.value[@"reading_id"];
+        [self lookupAndAddSingleReading:reading_id];
+        
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
+    }];
+}
+
+-(void)lookupAndAddSingleReading:(NSString *)readingID {
+    
+    NSString * baseReadingString = @"https://bookreadings.firebaseio.com/readings";
+    NSString * readingRefString = [NSString stringWithFormat:@"%@/%@", baseReadingString, readingID];
+    Firebase * readingRef = [[Firebase alloc] initWithUrl:readingRefString];
+    [readingRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        //create a new reading object and add to readings
+        Reading * reading = [[Reading alloc] initWithDictionary:snapshot.value];
+        [self.readings addObject:reading];
+        [self.tableView reloadData];
+        
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
-    }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Segues
@@ -68,14 +86,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    return self.readings.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    Reading * reading = self.readings[indexPath.row];
+    cell.textLabel.text = reading.title;
+    
     return cell;
 }
 
