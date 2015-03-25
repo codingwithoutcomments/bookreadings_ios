@@ -18,6 +18,8 @@
 
 @implementation MasterViewController
 
+static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net";
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -93,11 +95,31 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ReadingTableViewCell *cell = (ReadingTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    Reading * reading = self.readings[indexPath.row];
-    NSURL * url = [NSURL URLWithString:@"https://d1onveq9178bu8.cloudfront.net/api/file/25GB4DQATQaRj1pYYDQA/convert?w=623&h=623&fit=crop&align=center"];
-    NSData *imageData = [NSData dataWithContentsOfURL:url];
-    cell.coverImage.image = [UIImage imageWithData:imageData];
+    
+    cell.coverImage.image = nil;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        Reading * reading = self.readings[indexPath.row];
+        CGFloat width = CGRectGetWidth(self.view.bounds);
+        NSString * screenWidth = [NSString stringWithFormat: @"%d",(int)width];
+        CGRect frame = [self.tableView rectForRowAtIndexPath:indexPath];
+        CGFloat height = frame.size.height;
+        NSString * cellHeight = [NSString stringWithFormat: @"%d",(int)height];
+        NSString * coverImageString = [NSString stringWithFormat:@"%@%@/convert?w=%@&h=%@&fit=crop&align=center", CLOUD_FRONT_URL, reading.coverImageURL, screenWidth, cellHeight];
+        NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:coverImageString]];
+        if (imgData) {
+            UIImage *image = [UIImage imageWithData:imgData];
+            if (image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    ReadingTableViewCell *updateCell = (ReadingTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+                    if (updateCell)
+                        cell.coverImage.image = image;
+                });
+            }
+        }
+    });
+    
     //cell.textLabel.text = reading.title;
     
     return cell;

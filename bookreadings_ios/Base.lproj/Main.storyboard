@@ -86,8 +86,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jnW-or-2ER">
-                                            <rect key="frame" x="-24" y="-47" width="624" height="299"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jnW-or-2ER">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>

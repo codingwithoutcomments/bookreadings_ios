@@ -1,0 +1,14 @@
+Pods/
+
+Pods/*.*
+
+Pods/Pods.xcodeproj/*
+
+Podfile.lock
+
+Pods/Pods.xcodeproj/xcuserdata/chreath.xcuserdatad/xcschemes/Pods.xcscheme
+
+Pods/Pods.xcodeproj/xcuserdata/chreath.xcuserdatad/xcschemes/xcschememanagement.plist
+
+Pods/Target Support Files/Pods/*
+
