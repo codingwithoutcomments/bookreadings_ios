@@ -11,5 +11,6 @@
 @interface ReadingTableViewCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UIImageView* coverImage;
+@property (nonatomic, weak) IBOutlet UILabel * title;
 
 @end

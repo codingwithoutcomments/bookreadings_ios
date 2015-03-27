@@ -108,14 +108,44 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
     CGFloat height = frame.size.height;
     NSString * cellHeight = [NSString stringWithFormat: @"%d",(int)height];
     
-    NSString * coverImageString = [NSString stringWithFormat:@"%@%@/convert?w=%@&h=%@&fit=crop&align=center", CLOUD_FRONT_URL, reading.coverImageURL, screenWidth, cellHeight];
+    NSString * coverImageString = [NSString stringWithFormat:@"%@%@/convert?w=%@&h=%@&fit=crop&align=top", CLOUD_FRONT_URL, reading.coverImageURL, screenWidth, cellHeight];
 
     //set the background image
     cell.coverImage.contentMode = UIViewContentModeTopLeft;
     [cell.coverImage sd_setImageWithURL:[NSURL URLWithString:coverImageString]
                       placeholderImage:nil];
     
+    [cell.title setPreferredMaxLayoutWidth:width - 30];
+    
+    cell.title.text = reading.title;
+    
     return cell;
+}
+
+-(CGSize)sizeOfMultiLineLabel:(ReadingTableViewCell*)cell screenWidth:(CGFloat)screenWidth text:(NSString*)text{
+    
+    NSAssert(self, @"UILabel was nil");
+    
+    //Label text
+    NSString *aLabelTextString = text;
+    
+    //Label font
+    UIFont *aLabelFont = cell.title.font;
+    
+    //Width of the Label
+    CGFloat aLabelSizeWidth = screenWidth;
+    
+    //version >= 7.0
+    
+    //Return the calculated size of the Label
+    return [aLabelTextString boundingRectWithSize:CGSizeMake(aLabelSizeWidth, MAXFLOAT)
+                                          options:NSStringDrawingUsesLineFragmentOrigin
+                                       attributes:@{
+                                                    NSFontAttributeName : aLabelFont
+                                                    }
+                                          context:nil].size;
+        
+    
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
