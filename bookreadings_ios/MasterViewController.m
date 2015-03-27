@@ -7,6 +7,8 @@
 //
 
 #import <Firebase/Firebase.h>
+#import <AFNetworking/UIKit+AFNetworking.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "ReadingTableViewCell.h"
@@ -96,31 +98,22 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
     
     ReadingTableViewCell *cell = (ReadingTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    cell.coverImage.image = nil;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        Reading * reading = self.readings[indexPath.row];
-        CGFloat width = CGRectGetWidth(self.view.bounds);
-        NSString * screenWidth = [NSString stringWithFormat: @"%d",(int)width];
-        CGRect frame = [self.tableView rectForRowAtIndexPath:indexPath];
-        CGFloat height = frame.size.height;
-        NSString * cellHeight = [NSString stringWithFormat: @"%d",(int)height];
-        NSString * coverImageString = [NSString stringWithFormat:@"%@%@/convert?w=%@&h=%@&fit=crop&align=center", CLOUD_FRONT_URL, reading.coverImageURL, screenWidth, cellHeight];
-        NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:coverImageString]];
-        if (imgData) {
-            UIImage *image = [UIImage imageWithData:imgData];
-            if (image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    ReadingTableViewCell *updateCell = (ReadingTableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-                    if (updateCell)
-                        cell.coverImage.image = image;
-                });
-            }
-        }
-    });
+    Reading * reading = self.readings[indexPath.row];
     
-    //cell.textLabel.text = reading.title;
+    //get width of height of each cell
+    CGFloat width = CGRectGetWidth(self.view.bounds);
+    NSString * screenWidth = [NSString stringWithFormat: @"%d",(int)width];
+    CGRect frame = [self.tableView rectForRowAtIndexPath:indexPath];
+    CGFloat height = frame.size.height;
+    NSString * cellHeight = [NSString stringWithFormat: @"%d",(int)height];
+    
+    NSString * coverImageString = [NSString stringWithFormat:@"%@%@/convert?w=%@&h=%@&fit=crop&align=center", CLOUD_FRONT_URL, reading.coverImageURL, screenWidth, cellHeight];
+
+    //set the background image
+    cell.coverImage.contentMode = UIViewContentModeTopLeft;
+    [cell.coverImage sd_setImageWithURL:[NSURL URLWithString:coverImageString]
+                      placeholderImage:nil];
     
     return cell;
 }
