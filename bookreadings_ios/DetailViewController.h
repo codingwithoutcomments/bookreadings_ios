@@ -7,11 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <StreamingKit/STKAudioPlayer.h>
+#import "Reading.h"
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) Reading * reading;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (nonatomic, strong) STKAudioPlayer *audioPlayer;
+
+
+- (void)setDetailItem:(Reading*)newReading;
 
 @end
 
