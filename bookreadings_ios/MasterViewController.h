@@ -16,6 +16,5 @@
 @property (strong, nonatomic) NSMutableArray * readings;
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
-
 @end
 

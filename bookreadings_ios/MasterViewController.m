@@ -110,7 +110,7 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
     CGFloat height = frame.size.height;
     NSString * cellHeight = [NSString stringWithFormat: @"%d",(int)height];
     
-    NSString * coverImageString = [NSString stringWithFormat:@"%@%@/convert?w=%@&h=%@&fit=crop&align=top", CLOUD_FRONT_URL, reading.coverImageURL, screenWidth, cellHeight];
+    NSString * coverImageString = [NSString stringWithFormat:@"%@%@/convert?w=%@&h=%@&fit=crop", CLOUD_FRONT_URL, reading.coverImageURL, screenWidth, cellHeight];
 
     //set the background image
     cell.coverImage.contentMode = UIViewContentModeTopLeft;

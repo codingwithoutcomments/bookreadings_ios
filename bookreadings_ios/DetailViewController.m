@@ -14,6 +14,8 @@
 
 @implementation DetailViewController
 
+@synthesize duration, progress, playPauseButton;
+
 static NSString* const CLOUD_FRONT_URL_AUDIO = @"https://d3e04w4j2r2rn6.cloudfront.net/";
 
 #pragma mark - Managing the detail item
@@ -36,7 +38,44 @@ static NSString* const CLOUD_FRONT_URL_AUDIO = @"https://d3e04w4j2r2rn6.cloudfro
         self.audioPlayer = [[STKAudioPlayer alloc] init];
         [self.audioPlayer play:audioFileURLString];
         
+        self.readingPlaying = TRUE;
+       
+        [NSTimer scheduledTimerWithTimeInterval:1.0
+                                         target:self
+                                       selector:@selector(setProgressAndDuration)
+                                       userInfo:nil
+                                        repeats:YES];
+        
     }
+}
+
+-(void)setProgressAndDuration {
+    
+    //set the duraiton and progress
+    self.duration.text = [self timeFormatted:(int)[self.audioPlayer duration]];
+    self.progress.text = [self timeFormatted:(int)[self.audioPlayer progress]];
+    
+}
+
+- (NSString *)timeFormatted:(int)totalSeconds
+{
+    
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60);
+    
+    return [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
+}
+
+- (IBAction)playPausePressed:(id)sender {
+    
+    if(self.readingPlaying) {
+        [self.audioPlayer pause];
+        self.readingPlaying = FALSE;
+    } else {
+        [self.audioPlayer resume];
+        self.readingPlaying = TRUE;
+    }
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

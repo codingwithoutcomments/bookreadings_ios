@@ -18,6 +18,9 @@
 		43CE1DED1AB9F13E006CA335 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43CE1DEC1AB9F13E006CA335 /* Images.xcassets */; };
 		43CE1DF01AB9F13E006CA335 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43CE1DEE1AB9F13E006CA335 /* LaunchScreen.xib */; };
 		43CE1DFC1AB9F13E006CA335 /* bookreadings_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43CE1DFB1AB9F13E006CA335 /* bookreadings_iosTests.m */; };
+		43F761181ACDEE240027D2B6 /* playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F761171ACDEE240027D2B6 /* playbutton.png */; };
+		43F7611C1ACDEF4F0027D2B6 /* playbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F7611B1ACDEF4F0027D2B6 /* playbutton@2x.png */; };
+		43F761211ACDF1B20027D2B6 /* playbutton@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F761201ACDF1B20027D2B6 /* playbutton@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		43CE1DF51AB9F13E006CA335 /* bookreadings_iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookreadings_iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CE1DFA1AB9F13E006CA335 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43CE1DFB1AB9F13E006CA335 /* bookreadings_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bookreadings_iosTests.m; sourceTree = "<group>"; };
+		43F761171ACDEE240027D2B6 /* playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbutton.png; sourceTree = "<group>"; };
+		43F7611B1ACDEF4F0027D2B6 /* playbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playbutton@2x.png"; sourceTree = "<group>"; };
+		43F761201ACDF1B20027D2B6 /* playbutton@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playbutton@3x.png"; sourceTree = "<group>"; };
 		8070122EE391FF0FC5658A81 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C44C8F8B7FE5CA53B36DBB38 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80A3E6BCD33604DFFF6D449 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +149,9 @@
 		43CE1DDC1AB9F13D006CA335 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				43F761201ACDF1B20027D2B6 /* playbutton@3x.png */,
+				43F761171ACDEE240027D2B6 /* playbutton.png */,
+				43F7611B1ACDEF4F0027D2B6 /* playbutton@2x.png */,
 				43CE1DDD1AB9F13D006CA335 /* Info.plist */,
 				43CE1DDE1AB9F13D006CA335 /* main.m */,
 			);
@@ -250,7 +259,10 @@
 			files = (
 				43CE1DEB1AB9F13E006CA335 /* Main.storyboard in Resources */,
 				43CE1DF01AB9F13E006CA335 /* LaunchScreen.xib in Resources */,
+				43F7611C1ACDEF4F0027D2B6 /* playbutton@2x.png in Resources */,
 				43CE1DED1AB9F13E006CA335 /* Images.xcassets in Resources */,
+				43F761211ACDF1B20027D2B6 /* playbutton@3x.png in Resources */,
+				43F761181ACDEE240027D2B6 /* playbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
