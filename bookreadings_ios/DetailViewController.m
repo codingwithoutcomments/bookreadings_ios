@@ -14,7 +14,7 @@
 
 @implementation DetailViewController
 
-@synthesize duration, progress, playPauseButton;
+@synthesize duration, progress, playPauseButton, slider;
 
 static NSString* const CLOUD_FRONT_URL_AUDIO = @"https://d3e04w4j2r2rn6.cloudfront.net/";
 
@@ -87,7 +87,11 @@ static NSString* const CLOUD_FRONT_URL_AUDIO = @"https://d3e04w4j2r2rn6.cloudfro
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view, typically from a nib.
+    UIImage *sliderThumb = [UIImage imageNamed:@"uislider-thumb.png"];
+    [slider setThumbImage:sliderThumb forState:UIControlStateNormal];
+    [slider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning {

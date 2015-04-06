@@ -95,6 +95,7 @@
                         <outlet property="duration" destination="RSz-E5-PJd" id="B1L-wm-qYq"/>
                         <outlet property="playPauseButton" destination="DfM-uq-eHc" id="wsZ-8T-xGY"/>
                         <outlet property="progress" destination="OW5-JY-lh2" id="Slf-u5-KvP"/>
+                        <outlet property="slider" destination="qxV-Uj-E6k" id="Zf0-0d-th4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>

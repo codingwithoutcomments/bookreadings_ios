@@ -17,6 +17,7 @@
 @property (strong, nonatomic) Reading * reading;
 @property (weak, nonatomic) IBOutlet UILabel * duration;
 @property (weak, nonatomic) IBOutlet UILabel * progress;
+@property (weak, nonatomic) IBOutlet UISlider * slider;
 @property (weak, nonatomic) IBOutlet UIButton * playPauseButton;
 @property (nonatomic, strong) STKAudioPlayer *audioPlayer;
 @property BOOL readingPlaying;
