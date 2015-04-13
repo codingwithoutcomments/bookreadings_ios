@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "DetailViewController.h"
+#import "LeftMenuTableViewController.h"
+#import "SlideNavigationController.h"
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 
@@ -25,6 +27,13 @@
     
     NSError* error;
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+    
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    LeftMenuTableViewController *leftMenu = [[LeftMenuTableViewController alloc] init];
+    
+    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
+
     
     return YES;
 }

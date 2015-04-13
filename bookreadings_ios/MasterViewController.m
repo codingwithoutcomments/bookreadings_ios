@@ -30,10 +30,27 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
     }
 }
 
+- (BOOL)slideNavigationControllerShouldDisplayLeftMenu
+{
+    return YES;
+}
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    UIButton *button  = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(0, 0, 30, 30);
+    [button setImage:[UIImage imageNamed:@"menu-button"] forState:UIControlStateNormal];
+    [button addTarget:[SlideNavigationController sharedInstance] action:@selector(toggleLeftMenu) forControlEvents:UIControlEventTouchUpInside];
+    button.tintColor = [UIColor whiteColor];
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    [SlideNavigationController sharedInstance].leftBarButtonItem = leftBarButtonItem;
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
@@ -124,6 +141,11 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
     return cell;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 -(CGSize)sizeOfMultiLineLabel:(ReadingTableViewCell*)cell screenWidth:(CGFloat)screenWidth text:(NSString*)text{
     
     NSAssert(self, @"UILabel was nil");
@@ -152,7 +174,7 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

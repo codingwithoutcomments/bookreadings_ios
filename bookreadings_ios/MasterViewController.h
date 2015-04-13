@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Reading.h"
+#import "SlideNavigationController.h"
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController <SlideNavigationControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray * readings;
 @property (strong, nonatomic) DetailViewController *detailViewController;
