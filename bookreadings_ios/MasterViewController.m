@@ -51,6 +51,13 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
     button.tintColor = [UIColor whiteColor];
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     [SlideNavigationController sharedInstance].leftBarButtonItem = leftBarButtonItem;
+    
+    UIImage* logoImage = [UIImage imageNamed:@"Microphone.png"];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
+    
+    UIButton * MagnifyGlass = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(0, 0, 30, 30);
+    [button setImage:[UIImage imageNamed:@"MagnifyGlass.png"] forState:UIControlStateNormal];
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
