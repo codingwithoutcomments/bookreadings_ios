@@ -14,7 +14,7 @@
 
 @implementation DetailViewController
 
-@synthesize duration, progress, playPauseButton, slider;
+@synthesize duration, progress, playPauseButton, slider, draggingProgressSlider;
 
 static NSString* const CLOUD_FRONT_URL_AUDIO = @"https://d3e04w4j2r2rn6.cloudfront.net/";
 
@@ -49,12 +49,34 @@ static NSString* const CLOUD_FRONT_URL_AUDIO = @"https://d3e04w4j2r2rn6.cloudfro
     }
 }
 
+- (IBAction)editingDidBegin:(id)sender {
+    
+    draggingProgressSlider = TRUE;
+    
+    self.progress.text = [self timeFormatted:self.slider.value];
+    
+    
+}
+- (IBAction)editingDidEnd:(id)sender {
+    
+    draggingProgressSlider = FALSE;
+    
+    float valueToSeekTo = self.slider.value;
+    [self.audioPlayer seekToTime:valueToSeekTo];
+    
+}
+
 -(void)setProgressAndDuration {
     
-    //set the duraiton and progress
-    self.duration.text = [self timeFormatted:(int)[self.audioPlayer duration]];
-    self.progress.text = [self timeFormatted:(int)[self.audioPlayer progress]];
+    if(!draggingProgressSlider) {
     
+        //set the duraiton and progress
+        self.duration.text = [self timeFormatted:(int)[self.audioPlayer duration]];
+        self.progress.text = [self timeFormatted:(int)[self.audioPlayer progress]];
+        
+        self.slider.maximumValue = [self.audioPlayer duration];
+        self.slider.value = [self.audioPlayer progress];
+    }
 }
 
 - (NSString *)timeFormatted:(int)totalSeconds

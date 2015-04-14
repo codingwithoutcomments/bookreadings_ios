@@ -21,9 +21,12 @@
 @property (weak, nonatomic) IBOutlet UIButton * playPauseButton;
 @property (nonatomic, strong) STKAudioPlayer *audioPlayer;
 @property BOOL readingPlaying;
+@property BOOL draggingProgressSlider;
 
 
 - (IBAction)playPausePressed:(id)sender;
+- (IBAction)editingDidBegin:(id)sender;
+- (IBAction)editingDidEnd:(id)sender;
 - (void)setDetailItem:(Reading*)newReading;
 
 @end
