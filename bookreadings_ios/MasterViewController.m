@@ -54,10 +54,13 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
     
     UIImage* logoImage = [UIImage imageNamed:@"Microphone.png"];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:logoImage];
-    
-    UIButton * MagnifyGlass = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(0, 0, 30, 30);
-    [button setImage:[UIImage imageNamed:@"MagnifyGlass.png"] forState:UIControlStateNormal];
+
+    UIButton * magnifyGlass = [UIButton buttonWithType:UIButtonTypeSystem];
+    magnifyGlass.frame = CGRectMake(0, 0, 30, 30);
+    [magnifyGlass setImage:[UIImage imageNamed:@"MagnifyGlass.png"] forState:UIControlStateNormal];
+    magnifyGlass.tintColor = [UIColor whiteColor];
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:magnifyGlass];
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
