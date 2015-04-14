@@ -69,9 +69,11 @@ static NSString* const CLOUD_FRONT_URL_AUDIO = @"https://d3e04w4j2r2rn6.cloudfro
 - (IBAction)playPausePressed:(id)sender {
     
     if(self.readingPlaying) {
+        [playPauseButton setImage:[UIImage imageNamed:@"playbutton.png"] forState:UIControlStateNormal];
         [self.audioPlayer pause];
         self.readingPlaying = FALSE;
     } else {
+        [playPauseButton setImage:[UIImage imageNamed:@"Stop.png"] forState:UIControlStateNormal];
         [self.audioPlayer resume];
         self.readingPlaying = TRUE;
     }
