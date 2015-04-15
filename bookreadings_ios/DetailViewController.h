@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel * progress;
 @property (weak, nonatomic) IBOutlet UISlider * slider;
 @property (weak, nonatomic) IBOutlet UIButton * playPauseButton;
+@property (weak, nonatomic) IBOutlet UIImageView * coverImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 @property (nonatomic, strong) STKAudioPlayer *audioPlayer;
 @property BOOL readingPlaying;
 @property BOOL draggingProgressSlider;

@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Reath, Chris X. -ND. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
@@ -14,9 +15,11 @@
 
 @implementation DetailViewController
 
-@synthesize duration, progress, playPauseButton, slider, draggingProgressSlider;
+@synthesize duration, progress, playPauseButton, slider, draggingProgressSlider, coverImage, widthConstraint;
 
 static NSString* const CLOUD_FRONT_URL_AUDIO = @"https://d3e04w4j2r2rn6.cloudfront.net/";
+static NSString* const CLOUD_FRONT_URL_IMAGE = @"https://d1onveq9178bu8.cloudfront.net";
+static int const HEIGHT_OF_IMAGE = 200;
 
 #pragma mark - Managing the detail item
 
@@ -116,6 +119,26 @@ static NSString* const CLOUD_FRONT_URL_AUDIO = @"https://d3e04w4j2r2rn6.cloudfro
     UIImage *sliderThumb = [UIImage imageNamed:@"uislider-thumb.png"];
     [slider setThumbImage:sliderThumb forState:UIControlStateNormal];
     [slider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
+    
+    if(_reading) {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat width = screenRect.size.width;
+        NSString * screenWidth = [NSString stringWithFormat: @"%d",(int)width];
+        CGFloat height = HEIGHT_OF_IMAGE;
+        NSString * cellHeight = [NSString stringWithFormat: @"%d",(int)height];
+       
+        //modifying the width constraint on the fly
+        //http://stackoverflow.com/questions/23655096/change-frame-programmatically-with-auto-layout
+        //
+        widthConstraint.constant = width;
+        
+        NSString * coverImageString = [NSString stringWithFormat:@"%@%@/convert?w=%@&h=%@&fit=crop", CLOUD_FRONT_URL_IMAGE, _reading.coverImageURL, screenWidth, cellHeight];
+
+        //set the background image
+        coverImage.contentMode = UIViewContentModeTopLeft;
+        [coverImage sd_setImageWithURL:[NSURL URLWithString:coverImageString]
+                          placeholderImage:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

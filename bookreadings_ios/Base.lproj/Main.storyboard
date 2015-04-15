@@ -42,7 +42,7 @@
                                             <action selector="playPausePressed:" destination="JEX-9P-axG" eventType="touchUpInside" id="hUs-80-AVc"/>
                                         </connections>
                                     </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qxV-Uj-E6k">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qxV-Uj-E6k">
                                         <rect key="frame" x="137" y="17" width="397" height="31"/>
                                         <connections>
                                             <action selector="editingDidBegin:" destination="JEX-9P-axG" eventType="touchDragInside" id="5wc-Pu-se8"/>
@@ -86,11 +86,33 @@
                                     <constraint firstItem="RSz-E5-PJd" firstAttribute="top" secondItem="9iH-y6-kYh" secondAttribute="top" constant="22" id="xGK-6q-DLS"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFz-Hw-RN1">
+                                <rect key="frame" x="0.0" y="64" width="600" height="478"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eLD-LA-knD">
+                                        <rect key="frame" x="0.0" y="-40" width="608" height="198"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="198" id="QDm-ry-pRy"/>
+                                            <constraint firstAttribute="width" constant="608" id="gdU-3Z-Mw3"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="eLD-LA-knD" secondAttribute="bottom" constant="320" id="62S-Z9-5ov"/>
+                                    <constraint firstItem="eLD-LA-knD" firstAttribute="leading" secondItem="pFz-Hw-RN1" secondAttribute="leading" id="YAl-lf-MBu"/>
+                                    <constraint firstAttribute="trailing" secondItem="eLD-LA-knD" secondAttribute="trailing" id="cwm-qn-z3p"/>
+                                    <constraint firstItem="eLD-LA-knD" firstAttribute="top" secondItem="pFz-Hw-RN1" secondAttribute="top" constant="-40" id="igO-xs-5YL"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pFz-Hw-RN1" firstAttribute="leading" secondItem="9iH-y6-kYh" secondAttribute="leading" id="0m3-1b-FX9"/>
                             <constraint firstItem="9iH-y6-kYh" firstAttribute="leading" secondItem="EUJ-4h-P1W" secondAttribute="leading" id="1NS-dj-lIp"/>
                             <constraint firstAttribute="trailing" secondItem="9iH-y6-kYh" secondAttribute="trailing" id="1cH-U6-oDj"/>
+                            <constraint firstItem="pFz-Hw-RN1" firstAttribute="top" secondItem="iLv-QP-CXc" secondAttribute="bottom" id="IHE-z6-bi3"/>
+                            <constraint firstItem="pFz-Hw-RN1" firstAttribute="trailing" secondItem="9iH-y6-kYh" secondAttribute="trailing" id="PVy-DM-bwM"/>
+                            <constraint firstItem="awu-Kb-cjy" firstAttribute="top" secondItem="pFz-Hw-RN1" secondAttribute="bottom" constant="58" id="ec5-Xq-ccc"/>
                             <constraint firstItem="9iH-y6-kYh" firstAttribute="top" relation="lessThanOrEqual" secondItem="iLv-QP-CXc" secondAttribute="bottom" constant="800" id="ezq-TM-xcB"/>
                             <constraint firstAttribute="bottomMargin" secondItem="9iH-y6-kYh" secondAttribute="bottom" id="u3g-JE-SSU"/>
                         </constraints>
@@ -98,10 +120,12 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
+                        <outlet property="coverImage" destination="eLD-LA-knD" id="GQq-U9-M6c"/>
                         <outlet property="duration" destination="RSz-E5-PJd" id="B1L-wm-qYq"/>
                         <outlet property="playPauseButton" destination="DfM-uq-eHc" id="wsZ-8T-xGY"/>
                         <outlet property="progress" destination="OW5-JY-lh2" id="Slf-u5-KvP"/>
                         <outlet property="slider" destination="qxV-Uj-E6k" id="Zf0-0d-th4"/>
+                        <outlet property="widthConstraint" destination="gdU-3Z-Mw3" id="8fb-W9-3VV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
