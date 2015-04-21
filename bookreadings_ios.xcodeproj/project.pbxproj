@@ -29,6 +29,9 @@
 		43F31C361ADCA87400B2CB1F /* MagnifyGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F31C331ADCA87400B2CB1F /* MagnifyGlass.png */; };
 		43F31C3B1ADCC1ED00B2CB1F /* Stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F31C381ADCC1ED00B2CB1F /* Stop@2x.png */; };
 		43F31C3C1ADCC1ED00B2CB1F /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F31C391ADCC1ED00B2CB1F /* Stop.png */; };
+		43F31C431ADED93E00B2CB1F /* SpeachBubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F31C401ADED93E00B2CB1F /* SpeachBubble@2x.png */; };
+		43F31C441ADED93E00B2CB1F /* SpeachBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F31C411ADED93E00B2CB1F /* SpeachBubble.png */; };
+		43F31C491ADEE7DC00B2CB1F /* SpeachBubble@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F31C481ADEE7DC00B2CB1F /* SpeachBubble@3x.png */; };
 		43F761181ACDEE240027D2B6 /* playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F761171ACDEE240027D2B6 /* playbutton.png */; };
 		43F7611C1ACDEF4F0027D2B6 /* playbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43F7611B1ACDEF4F0027D2B6 /* playbutton@2x.png */; };
 /* End PBXBuildFile section */
@@ -75,6 +78,9 @@
 		43F31C331ADCA87400B2CB1F /* MagnifyGlass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MagnifyGlass.png; sourceTree = "<group>"; };
 		43F31C381ADCC1ED00B2CB1F /* Stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stop@2x.png"; sourceTree = "<group>"; };
 		43F31C391ADCC1ED00B2CB1F /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = "<group>"; };
+		43F31C401ADED93E00B2CB1F /* SpeachBubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SpeachBubble@2x.png"; sourceTree = "<group>"; };
+		43F31C411ADED93E00B2CB1F /* SpeachBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpeachBubble.png; sourceTree = "<group>"; };
+		43F31C481ADEE7DC00B2CB1F /* SpeachBubble@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SpeachBubble@3x.png"; sourceTree = "<group>"; };
 		43F761171ACDEE240027D2B6 /* playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbutton.png; sourceTree = "<group>"; };
 		43F7611B1ACDEF4F0027D2B6 /* playbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playbutton@2x.png"; sourceTree = "<group>"; };
 		8070122EE391FF0FC5658A81 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +178,9 @@
 		43CE1DDC1AB9F13D006CA335 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				43F31C481ADEE7DC00B2CB1F /* SpeachBubble@3x.png */,
+				43F31C401ADED93E00B2CB1F /* SpeachBubble@2x.png */,
+				43F31C411ADED93E00B2CB1F /* SpeachBubble.png */,
 				43F31C381ADCC1ED00B2CB1F /* Stop@2x.png */,
 				43F31C391ADCC1ED00B2CB1F /* Stop.png */,
 				43F31C311ADCA87400B2CB1F /* MagnifyGlass@3x.png */,
@@ -291,6 +300,7 @@
 			files = (
 				43F31C301ADCA5DF00B2CB1F /* Microphone.png in Resources */,
 				43A3C6B81ACF20C500FC8999 /* uislider-thumb@2x.png in Resources */,
+				43F31C431ADED93E00B2CB1F /* SpeachBubble@2x.png in Resources */,
 				43A3C6B61ACF1F9400FC8999 /* uislider-thumb.png in Resources */,
 				43F31C351ADCA87400B2CB1F /* MagnifyGlass@2x.png in Resources */,
 				43CE1DEB1AB9F13E006CA335 /* Main.storyboard in Resources */,
@@ -301,9 +311,11 @@
 				43CE1DED1AB9F13E006CA335 /* Images.xcassets in Resources */,
 				43F31C361ADCA87400B2CB1F /* MagnifyGlass.png in Resources */,
 				43F31C3C1ADCC1ED00B2CB1F /* Stop.png in Resources */,
+				43F31C491ADEE7DC00B2CB1F /* SpeachBubble@3x.png in Resources */,
 				43F31C341ADCA87400B2CB1F /* MagnifyGlass@3x.png in Resources */,
 				43F31C3B1ADCC1ED00B2CB1F /* Stop@2x.png in Resources */,
 				43F761181ACDEE240027D2B6 /* playbutton.png in Resources */,
+				43F31C441ADED93E00B2CB1F /* SpeachBubble.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

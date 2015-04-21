@@ -90,18 +90,42 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="478"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eLD-LA-knD">
-                                        <rect key="frame" x="0.0" y="-40" width="608" height="198"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="608" height="198"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="198" id="QDm-ry-pRy"/>
                                             <constraint firstAttribute="width" constant="608" id="gdU-3Z-Mw3"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sand Hill Shuffle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTe-oM-CEJ">
+                                        <rect key="frame" x="0.0" y="209" width="600" height="27"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="8lJ-2e-PjI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Posted by Bookreadings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gO5-q2-FFe">
+                                        <rect key="frame" x="0.0" y="237" width="600" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="JJt-uj-dcV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="eLD-LA-knD" secondAttribute="bottom" constant="320" id="62S-Z9-5ov"/>
-                                    <constraint firstItem="eLD-LA-knD" firstAttribute="leading" secondItem="pFz-Hw-RN1" secondAttribute="leading" id="YAl-lf-MBu"/>
-                                    <constraint firstAttribute="trailing" secondItem="eLD-LA-knD" secondAttribute="trailing" id="cwm-qn-z3p"/>
-                                    <constraint firstItem="eLD-LA-knD" firstAttribute="top" secondItem="pFz-Hw-RN1" secondAttribute="top" constant="-40" id="igO-xs-5YL"/>
+                                    <constraint firstItem="eLD-LA-knD" firstAttribute="leading" secondItem="FTe-oM-CEJ" secondAttribute="leading" id="7Lu-Ya-MEN"/>
+                                    <constraint firstItem="FTe-oM-CEJ" firstAttribute="leading" secondItem="gO5-q2-FFe" secondAttribute="leading" id="BvM-vg-KrX"/>
+                                    <constraint firstItem="FTe-oM-CEJ" firstAttribute="trailing" secondItem="gO5-q2-FFe" secondAttribute="trailing" id="HyR-bj-4rU"/>
+                                    <constraint firstItem="gO5-q2-FFe" firstAttribute="top" secondItem="FTe-oM-CEJ" secondAttribute="bottom" constant="1" id="Jnb-K0-cOC"/>
+                                    <constraint firstItem="FTe-oM-CEJ" firstAttribute="top" secondItem="eLD-LA-knD" secondAttribute="bottom" constant="11" id="UND-Pz-Um2"/>
+                                    <constraint firstItem="FTe-oM-CEJ" firstAttribute="leading" secondItem="pFz-Hw-RN1" secondAttribute="leading" id="XiB-Tp-t2a"/>
+                                    <constraint firstAttribute="bottom" secondItem="gO5-q2-FFe" secondAttribute="bottom" constant="226" id="XqP-17-5r0"/>
+                                    <constraint firstAttribute="trailing" secondItem="gO5-q2-FFe" secondAttribute="trailing" id="ja8-og-DTA"/>
+                                    <constraint firstItem="eLD-LA-knD" firstAttribute="top" secondItem="pFz-Hw-RN1" secondAttribute="top" id="mDf-i9-S8L"/>
+                                    <constraint firstItem="gO5-q2-FFe" firstAttribute="centerX" secondItem="pFz-Hw-RN1" secondAttribute="centerX" id="sdA-1R-T9s"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -118,7 +142,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="coverImage" destination="eLD-LA-knD" id="GQq-U9-M6c"/>
                         <outlet property="duration" destination="RSz-E5-PJd" id="B1L-wm-qYq"/>

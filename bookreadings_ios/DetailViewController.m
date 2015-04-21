@@ -7,7 +7,9 @@
 //
 
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <QuartzCore/QuartzCore.h>
 #import "DetailViewController.h"
+#import "AZCenterLabelButton.h"
 
 @interface DetailViewController ()
 
@@ -138,7 +140,48 @@ static int const HEIGHT_OF_IMAGE = 200;
         coverImage.contentMode = UIViewContentModeTopLeft;
         [coverImage sd_setImageWithURL:[NSURL URLWithString:coverImageString]
                           placeholderImage:nil];
+        
+        
+        //gradient over UIImage
+        CAGradientLayer *gradient = [CAGradientLayer layer];
+        
+        gradient.frame = CGRectMake(0, 0, self.coverImage.bounds.size.width, 7);
+        gradient.colors = @[(id)[[UIColor colorWithWhite:0 alpha:0.2] CGColor],
+                            (id)[[UIColor colorWithWhite:0 alpha:0.15] CGColor],
+                            (id)[[UIColor colorWithWhite:0 alpha:0.1] CGColor],
+                            (id)[[UIColor colorWithWhite:0 alpha:0.05] CGColor],
+                            (id)[[UIColor clearColor] CGColor]];
+        [self.coverImage.layer insertSublayer:gradient atIndex:0];
+        
+        [self populateCommentBubble];
+        
     }
+}
+
+-(void)populateCommentBubble {
+    
+    //comment bubble and count
+    CGRect rect = CGRectMake(0, 0, 30, 30);
+    UIButton *button  = [[UIButton alloc] initWithFrame:rect];
+    [button setImage:[UIImage imageNamed:@"SpeachBubble.png"] forState:UIControlStateNormal];
+    button.titleLabel.textColor=[UIColor whiteColor];
+    button.titleLabel.font = [UIFont systemFontOfSize:9];;
+    
+    button.imageEdgeInsets = UIEdgeInsetsMake(5,
+                                            0.0f,
+                                            0.0f,
+                                            - 25);
+    
+    button.titleEdgeInsets = UIEdgeInsetsMake(0.0f,
+                                            -5.0,
+                                            0.0f,
+                                            0.0f);
+    
+    
+    [button setTitle:@"0" forState:UIControlStateNormal];
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem= rightBarButtonItem;
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -33,7 +33,8 @@
     LeftMenuTableViewController *leftMenu = [[LeftMenuTableViewController alloc] init];
     
     [SlideNavigationController sharedInstance].leftMenu = leftMenu;
-
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     return YES;
 }
