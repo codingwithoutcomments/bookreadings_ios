@@ -165,12 +165,26 @@ static int const HEIGHT_OF_IMAGE = 200;
     UIButton *button  = [[UIButton alloc] initWithFrame:rect];
     [button setImage:[UIImage imageNamed:@"SpeachBubble.png"] forState:UIControlStateNormal];
     button.titleLabel.textColor=[UIColor whiteColor];
+    
+    NSInteger commentCount = [self.reading commentCount];
+    
     button.titleLabel.font = [UIFont systemFontOfSize:9];;
+    
+    if(commentCount >= 100) {
+        button.titleLabel.font = [UIFont systemFontOfSize:6];
+    }
+   
+    float offset = -25;
+    if(commentCount >= 10) {
+        offset = -30;
+    } else if (commentCount >= 100){
+        offset = -40;
+    }
     
     button.imageEdgeInsets = UIEdgeInsetsMake(5,
                                             0.0f,
                                             0.0f,
-                                            - 25);
+                                            offset);
     
     button.titleEdgeInsets = UIEdgeInsetsMake(0.0f,
                                             -5.0,
@@ -178,7 +192,7 @@ static int const HEIGHT_OF_IMAGE = 200;
                                             0.0f);
     
     
-    [button setTitle:@"0" forState:UIControlStateNormal];
+    [button setTitle:[@(commentCount) stringValue] forState:UIControlStateNormal];
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem= rightBarButtonItem;
     

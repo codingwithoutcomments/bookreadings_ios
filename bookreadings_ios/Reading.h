@@ -21,7 +21,12 @@
 @property (nonatomic, strong) NSString * purchaseLink;
 @property (nonatomic, strong) NSArray * tags;
 @property (nonatomic, strong) NSString * title;
+@property NSInteger commentCount;
+@property NSInteger playedCount;
+@property NSInteger likeCount;
+@property (nonatomic, strong) NSString * key;
 
--(id)initWithDictionary:(NSDictionary*)reading;
+-(id)initWithDictionary:(NSDictionary*)reading key:(NSString*)key;
+-(void)setCounts:(NSDictionary*)countsDictionary;
 
 @end

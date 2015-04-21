@@ -85,10 +85,22 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
     Firebase * readingRef = [[Firebase alloc] initWithUrl:readingRefString];
     [readingRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         //create a new reading object and add to readings
-        Reading * reading = [[Reading alloc] initWithDictionary:snapshot.value];
+        Reading * reading = [[Reading alloc] initWithDictionary:snapshot.value key:snapshot.key];
         [self.readings addObject:reading];
+        [self lookupAndAddReadingStats:reading];
         [self.tableView reloadData];
         
+    }];
+    
+}
+
+-(void)lookupAndAddReadingStats:(Reading*)reading {
+    
+    NSString * baseReadingString = @"https://bookreadings.firebaseio.com/readings_stats";
+    NSString * readingRefString = [NSString stringWithFormat:@"%@/%@", baseReadingString, reading.key];
+    Firebase * readingRef = [[Firebase alloc] initWithUrl:readingRefString];
+    [readingRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        [reading setCounts:snapshot.value];
     }];
     
 }

@@ -10,11 +10,13 @@
 
 @implementation Reading
 
-@synthesize audioFilename, audioKey, coverImageURL, created, createdByFullID, createdByID, createdByName, information, purchaseLink, tags, title;
+@synthesize audioFilename, audioKey, coverImageURL, created, createdByFullID, createdByID, createdByName, information, purchaseLink, tags, title, commentCount, playedCount, likeCount;
 
--(id)initWithDictionary:(NSDictionary*)reading {
+-(id)initWithDictionary:(NSDictionary*)reading key:(NSString*)key {
     
     if ( self = [super init] ) {
+        
+        self.key = key;
         
         if([reading objectForKey:@"audio_filename"]){
             self.audioFilename = [reading objectForKey:@"audio_filename"];
@@ -67,6 +69,22 @@
     } else {
         return nil;
     }
+}
+
+-(void)setCounts:(NSDictionary*)countsDictionary {
+    
+    if([countsDictionary objectForKey:@"comment_count"]) {
+        self.commentCount = [[countsDictionary objectForKey:@"comment_count"] integerValue];
+    }
+    
+    if([countsDictionary objectForKey:@"like_count"]) {
+        self.likeCount = [[countsDictionary objectForKey:@"like_count"] integerValue];
+    }
+    
+    if([countsDictionary objectForKey:@"play_count"]) {
+        self.playedCount = [[countsDictionary objectForKey:@"play_count"] integerValue];
+    }
+    
 }
 
 
