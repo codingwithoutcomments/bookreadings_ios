@@ -123,11 +123,15 @@ static int const HEIGHT_OF_IMAGE = 200;
     [slider setThumbImage:sliderThumb forState:UIControlStateHighlighted];
     
     if(_reading) {
+        
+        CGFloat scale = [UIScreen mainScreen].scale;
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         CGFloat width = screenRect.size.width;
-        NSString * screenWidth = [NSString stringWithFormat: @"%d",(int)width];
+        CGFloat retinaWidth = width * scale;
+        NSString * screenWidth = [NSString stringWithFormat: @"%d",(int)retinaWidth];
         CGFloat height = HEIGHT_OF_IMAGE;
-        NSString * cellHeight = [NSString stringWithFormat: @"%d",(int)height];
+        CGFloat retinaHeight = height * scale;
+        NSString * cellHeight = [NSString stringWithFormat: @"%d",(int)retinaHeight];
        
         //modifying the width constraint on the fly
         //http://stackoverflow.com/questions/23655096/change-frame-programmatically-with-auto-layout
@@ -138,9 +142,17 @@ static int const HEIGHT_OF_IMAGE = 200;
 
         //set the background image
         coverImage.contentMode = UIViewContentModeTopLeft;
-        [coverImage sd_setImageWithURL:[NSURL URLWithString:coverImageString]
-                          placeholderImage:nil];
-        
+        [coverImage sd_setImageWithURL:[NSURL URLWithString:coverImageString] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                          CGFloat scale = [UIScreen mainScreen].scale;
+                          
+                          if (scale > 1.0) {
+                              image = [UIImage imageWithCGImage:[image CGImage]
+                                                          scale:[UIScreen mainScreen].scale
+                                                    orientation:UIImageOrientationUp];
+                              
+                              coverImage.image = image;
+                          }
+        }];
         
         //gradient over UIImage
         CAGradientLayer *gradient = [CAGradientLayer layer];
