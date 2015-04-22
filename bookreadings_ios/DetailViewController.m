@@ -127,6 +127,7 @@ static int const HEIGHT_OF_IMAGE = 200;
         CGFloat scale = [UIScreen mainScreen].scale;
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         CGFloat width = screenRect.size.width;
+        
         CGFloat retinaWidth = width * scale;
         NSString * screenWidth = [NSString stringWithFormat: @"%d",(int)retinaWidth];
         CGFloat height = HEIGHT_OF_IMAGE;
@@ -144,7 +145,7 @@ static int const HEIGHT_OF_IMAGE = 200;
         coverImage.contentMode = UIViewContentModeTopLeft;
         [coverImage sd_setImageWithURL:[NSURL URLWithString:coverImageString] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                           CGFloat scale = [UIScreen mainScreen].scale;
-                          
+            
                           if (scale > 1.0) {
                               image = [UIImage imageWithCGImage:[image CGImage]
                                                           scale:[UIScreen mainScreen].scale
@@ -178,19 +179,37 @@ static int const HEIGHT_OF_IMAGE = 200;
     [button setImage:[UIImage imageNamed:@"SpeachBubble.png"] forState:UIControlStateNormal];
     button.titleLabel.textColor=[UIColor whiteColor];
     
-    NSInteger commentCount = [self.reading commentCount];
+    NSInteger commentCount = 100;
     
     button.titleLabel.font = [UIFont systemFontOfSize:9];;
     
-    if(commentCount >= 100) {
+    CGFloat scale = [UIScreen mainScreen].scale;
+    
+    if(commentCount >= 100 && scale == 2.0) {
         button.titleLabel.font = [UIFont systemFontOfSize:6];
+    }
+    
+    if(commentCount >= 100 && scale == 3.0) {
+        button.titleLabel.font = [UIFont systemFontOfSize:7];
     }
    
     float offset = -25;
-    if(commentCount >= 10) {
+    float titleOffset = -5.0;
+    if(commentCount < 10 && scale == 3.0) {
+        offset = -26;
+        titleOffset = -10.0;
+    } else if(commentCount >= 10 && commentCount < 100 && scale == 3.0) {
+        offset = -27;
+        titleOffset = -15.0;
+    } else if(commentCount >= 100 && scale == 3.0) {
+        offset = -29;
+        titleOffset = -15.0;
+    } else if(commentCount >= 10 && scale == 2.0) {
         offset = -30;
-    } else if (commentCount >= 100){
+        titleOffset = -5.0;
+    } else if (commentCount >= 100 && scale == 2.0){
         offset = -40;
+        titleOffset = -5.0;
     }
     
     button.imageEdgeInsets = UIEdgeInsetsMake(5,
@@ -199,7 +218,7 @@ static int const HEIGHT_OF_IMAGE = 200;
                                             offset);
     
     button.titleEdgeInsets = UIEdgeInsetsMake(0.0f,
-                                            -5.0,
+                                            titleOffset,
                                             0.0f,
                                             0.0f);
     
