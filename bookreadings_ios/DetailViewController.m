@@ -156,19 +156,24 @@ static int const HEIGHT_OF_IMAGE = 200;
         }];
         
         //gradient over UIImage
-        CAGradientLayer *gradient = [CAGradientLayer layer];
-        
-        gradient.frame = CGRectMake(0, 0, self.coverImage.bounds.size.width, 7);
-        gradient.colors = @[(id)[[UIColor colorWithWhite:0 alpha:0.2] CGColor],
-                            (id)[[UIColor colorWithWhite:0 alpha:0.15] CGColor],
-                            (id)[[UIColor colorWithWhite:0 alpha:0.1] CGColor],
-                            (id)[[UIColor colorWithWhite:0 alpha:0.05] CGColor],
-                            (id)[[UIColor clearColor] CGColor]];
-        [self.coverImage.layer insertSublayer:gradient atIndex:0];
-        
+        [self gradientOverCoverImage];
         [self populateCommentBubble];
         
     }
+}
+
+-(void)gradientOverCoverImage {
+    
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    
+    gradient.frame = CGRectMake(0, 0, self.coverImage.bounds.size.width, 7);
+    gradient.colors = @[(id)[[UIColor colorWithWhite:0 alpha:0.2] CGColor],
+                        (id)[[UIColor colorWithWhite:0 alpha:0.15] CGColor],
+                        (id)[[UIColor colorWithWhite:0 alpha:0.1] CGColor],
+                        (id)[[UIColor colorWithWhite:0 alpha:0.05] CGColor],
+                        (id)[[UIColor clearColor] CGColor]];
+    [self.coverImage.layer insertSublayer:gradient atIndex:0];
+    
 }
 
 -(void)populateCommentBubble {
@@ -179,7 +184,7 @@ static int const HEIGHT_OF_IMAGE = 200;
     [button setImage:[UIImage imageNamed:@"SpeachBubble.png"] forState:UIControlStateNormal];
     button.titleLabel.textColor=[UIColor whiteColor];
     
-    NSInteger commentCount = 100;
+    NSInteger commentCount = [self.reading commentCount];
     
     button.titleLabel.font = [UIFont systemFontOfSize:9];;
     
