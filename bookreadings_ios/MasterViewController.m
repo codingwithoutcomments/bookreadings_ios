@@ -143,20 +143,32 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
     Reading * reading = self.readings[indexPath.row];
     
     //get width of height of each cell
+    CGFloat scale = [UIScreen mainScreen].scale;
     CGFloat width = CGRectGetWidth(self.view.bounds);
-    NSString * screenWidth = [NSString stringWithFormat: @"%d",(int)width];
+    CGFloat retinaWidth = width * scale;
+    NSString * screenWidth = [NSString stringWithFormat: @"%d",(int)retinaWidth];
     CGRect frame = [self.tableView rectForRowAtIndexPath:indexPath];
     CGFloat height = frame.size.height;
-    NSString * cellHeight = [NSString stringWithFormat: @"%d",(int)height];
+    CGFloat retinaHeight = height * scale;
+    NSString * cellHeight = [NSString stringWithFormat: @"%d",(int)retinaHeight];
     
     NSString * coverImageString = [NSString stringWithFormat:@"%@%@/convert?w=%@&h=%@&fit=crop", CLOUD_FRONT_URL, reading.coverImageURL, screenWidth, cellHeight];
 
     //set the background image
     cell.coverImage.contentMode = UIViewContentModeTopLeft;
-    [cell.coverImage sd_setImageWithURL:[NSURL URLWithString:coverImageString]
-                      placeholderImage:nil];
+    [cell.coverImage sd_setImageWithURL:[NSURL URLWithString:coverImageString] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                      CGFloat scale = [UIScreen mainScreen].scale;
+        
+                      if (scale > 1.0) {
+                          image = [UIImage imageWithCGImage:[image CGImage]
+                                                      scale:[UIScreen mainScreen].scale
+                                                orientation:UIImageOrientationUp];
+                          
+                          cell.coverImage.image = image;
+                      }
+        }];
     
-    [cell.title setPreferredMaxLayoutWidth:width - 30];
+    [cell.title setPreferredMaxLayoutWidth:width - 45];
     
     cell.title.text = reading.title;
     
