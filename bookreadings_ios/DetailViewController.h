@@ -30,6 +30,7 @@
 - (IBAction)editingDidBegin:(id)sender;
 - (IBAction)editingDidEnd:(id)sender;
 - (void)setDetailItem:(Reading*)newReading;
+- (void)segueToComments:(id)sender;
 
 @end
 

@@ -25,6 +25,7 @@
 @property NSInteger playedCount;
 @property NSInteger likeCount;
 @property (nonatomic, strong) NSString * key;
+@property (nonatomic, strong) NSMutableArray * commentKeys;
 
 -(id)initWithDictionary:(NSDictionary*)reading key:(NSString*)key;
 -(void)setCounts:(NSDictionary*)countsDictionary;

@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DetailViewController.h"
 #import "AZCenterLabelButton.h"
+#import "CommentsTableViewController.h"
 
 @interface DetailViewController ()
 
@@ -182,6 +183,7 @@ static int const HEIGHT_OF_IMAGE = 200;
     CGRect rect = CGRectMake(0, 0, 30, 30);
     UIButton *button  = [[UIButton alloc] initWithFrame:rect];
     [button setImage:[UIImage imageNamed:@"SpeachBubble.png"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(segueToComments:) forControlEvents:UIControlEventTouchDown];
     button.titleLabel.textColor=[UIColor whiteColor];
     
     NSInteger commentCount = [self.reading commentCount];
@@ -232,6 +234,21 @@ static int const HEIGHT_OF_IMAGE = 200;
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem= rightBarButtonItem;
     
+}
+
+-(void)segueToComments:(id)sender{
+    
+    [self performSegueWithIdentifier:@"CommentsSegue" sender:sender];
+
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"CommentsSegue"])
+    {
+        CommentsTableViewController *controller = (CommentsTableViewController *)[[segue destinationViewController] topViewController];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {

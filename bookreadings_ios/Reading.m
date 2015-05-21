@@ -10,7 +10,7 @@
 
 @implementation Reading
 
-@synthesize audioFilename, audioKey, coverImageURL, created, createdByFullID, createdByID, createdByName, information, purchaseLink, tags, title, commentCount, playedCount, likeCount;
+@synthesize audioFilename, audioKey, coverImageURL, created, createdByFullID, createdByID, createdByName, information, purchaseLink, tags, title, commentCount, playedCount, likeCount, commentKeys;
 
 -(id)initWithDictionary:(NSDictionary*)reading key:(NSString*)key {
     
@@ -62,6 +62,17 @@
         
         if([reading objectForKey:@"title"]) {
             self.title = [reading objectForKey:@"title"];
+        }
+        
+        if([reading objectForKey:@"comments"]) {
+            
+            commentKeys = [[NSMutableArray alloc] init];
+            
+            NSMutableDictionary * comment_location_dictionary = [reading objectForKey:@"comments"];
+            for(id key in comment_location_dictionary) {
+                [commentKeys addObject:key];
+            }
+            
         }
         
         return self;

@@ -102,7 +102,6 @@ static NSString* const CLOUD_FRONT_URL = @"https://d1onveq9178bu8.cloudfront.net
     [readingRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         [reading setCounts:snapshot.value];
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning {
