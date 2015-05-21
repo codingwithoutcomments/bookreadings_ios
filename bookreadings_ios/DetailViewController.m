@@ -9,7 +9,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <QuartzCore/QuartzCore.h>
 #import "DetailViewController.h"
-#import "AZCenterLabelButton.h"
 #import "CommentsTableViewController.h"
 
 @interface DetailViewController ()
